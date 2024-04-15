@@ -1,0 +1,8 @@
+name: WitchKingOfAngmar
+version: '1.0-SNAPSHOT'
+main: org.randomlima.witchkingofangmar.WitchKingOfAngmar
+api-version: '1.20'
+commands:
+  angmarhelmet:
+    description: A command that gives the player the Witch King of Angmar Helmet.
+    usage: /<command>
