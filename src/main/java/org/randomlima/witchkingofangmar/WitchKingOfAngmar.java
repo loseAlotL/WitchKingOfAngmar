@@ -1,5 +1,6 @@
 package org.randomlima.witchkingofangmar;
 
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
 import org.bukkit.entity.Entity;
 import org.bukkit.entity.Player;
@@ -9,7 +10,11 @@ import org.bukkit.potion.PotionEffectType;
 import org.randomlima.witchkingofangmar.Commands.AngmarHelmet;
 import org.randomlima.witchkingofangmar.Listeners.AngmarListener;
 
+import org.randomlima.witchkingofangmar.Listeners.AngmarPlaceListener;
 import org.randomlima.witchkingofangmar.itemz.Itemz;
+
+import java.util.HashMap;
+import java.util.Map;
 
 public final class WitchKingOfAngmar extends JavaPlugin {
 
@@ -19,6 +24,7 @@ public final class WitchKingOfAngmar extends JavaPlugin {
         Itemz.init();
         this.getCommand("angmarhelmet").setExecutor(new AngmarHelmet());
         getServer().getPluginManager().registerEvents(new AngmarListener(), this);
+        getServer().getPluginManager().registerEvents(new AngmarPlaceListener(), this);
 
         getServer().getScheduler().runTaskTimer(this, () -> {
             // Iterate through online players and check if they are in water
@@ -45,6 +51,7 @@ public final class WitchKingOfAngmar extends JavaPlugin {
             }
         }, 0L, 10L); // 10 ticks = 0.5 seconds
     }
+
 
 
 
