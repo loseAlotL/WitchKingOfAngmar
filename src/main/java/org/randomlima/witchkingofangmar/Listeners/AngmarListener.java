@@ -1,7 +1,9 @@
 package org.randomlima.witchkingofangmar.Listeners;
 
 import com.destroystokyo.paper.event.player.PlayerArmorChangeEvent;
+import org.bukkit.Bukkit;
 import org.bukkit.Material;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.Listener;
@@ -19,7 +21,10 @@ import static org.apache.logging.log4j.LogManager.getLogger;
 import static org.bukkit.Bukkit.getServer;
 
 public class AngmarListener implements Listener {
-    private static Map<String, Boolean> pumpkinPlayers = new HashMap<>();
+    //private static Map<String, Boolean> pumpkinPlayers = new HashMap<>();
+    //List<String> pumpkinList = new ArrayList<>();
+    List<Player> listOfPlayers = new ArrayList<>();
+
 
 
     @EventHandler
@@ -30,14 +35,22 @@ public class AngmarListener implements Listener {
             PotionEffect nv = new PotionEffect(PotionEffectType.NIGHT_VISION, Integer.MAX_VALUE, 0);
             player.addPotionEffect(regen);
             player.addPotionEffect(nv);
-            pumpkinPlayers.put(player.getName(), true);
+            //pumpkinPlayers.put(player.getName(), true);
+            listOfPlayers.add(player);
         } else {
-            if (player.hasPotionEffect(PotionEffectType.REGENERATION) && player.hasPotionEffect(PotionEffectType.NIGHT_VISION) && pumpkinPlayers.containsKey(player.getName())) {
+            if (listOfPlayers.contains(player)) {
                 player.removePotionEffect(PotionEffectType.REGENERATION);
                 player.removePotionEffect(PotionEffectType.NIGHT_VISION);
-                pumpkinPlayers.remove(player.getName());
+                //pumpkinPlayers.remove(player.getName());
+                listOfPlayers.remove(player);
             }
         }
+    }
+//    public HashMap<String, Boolean> getMap() {
+//        return (HashMap<String, Boolean>) pumpkinPlayers;
+//    }
+    public List<Player> getPumpkinList() {
+        return listOfPlayers;
     }
 
 }

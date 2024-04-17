@@ -6,3 +6,4 @@ commands:
   angmarhelmet:
     description: A command that gives the player the Witch King of Angmar Helmet.
     usage: /<command>
+    permission: OP
